@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="./reset.css">
+		<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+		
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		
+		<style>
+			
+			html,body{
+				width: 100%;
+				margin: 0px;
+				padding: 0px;
+				background-color: green;
+			}
+			
+			.box{
+				width: 400px;
+				height: 470px;
+				border-radius: 10px;
+				margin-top: 200px;
+				margin-left: 1300px;
+				background-color: greenyellow;
+			}
+			
+			.box::before{
+				content:'';
+				display: table;
+			}
+			.box > .title{
+				margin-top: 100px;
+				margin-left: 147px;
+				font-size: 33px;
+				
+			}
+			.box > input{
+				outline: none;
+				border: 0px;
+				font-size: 23px;
+				margin-top: 30px;
+				margin-left: 60px;
+				border-bottom: solid 3px black;
+				background:none ;
+			}
+			
+			.box > .register{
+				border: 0px;
+				background:none;
+				font-size: 16px;
+				margin-top: 12px;
+				margin-left: 60px;
+				color: red;
+			}
+			.box > .login{
+				border: 0px;
+				background-color: none;
+				margin-top: 30px;
+				margin-left: 60px;
+				width: 270px;
+				height: 40px;
+				font-size: 20px;
+				background-color: yellow;
+				
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			
+			<div class="box">
+				<h1 class = "title">Login</h1>
+				<input type="text" placeholder="username" v-model = 'username' required><br>
+				<input type="password" placeholder="password" v-model = 'password' required><br>
+				<button class='register' @click = "register">Don't have account? Sign up</button><br>	
+				<button class='login' @click = "login">login</button>
+			</div>
+		</div>
+	</body>
+	<script>
+		
+		var vm = new Vue({
+			el : "#app",
+			data : {
+				username : '',
+				password : ''
+			},
+			methods : {
+				
+				login : function(){
+					alert('用户名 : ' + this.username + '\n密码 : ' + this.password);
+					axios({
+						method : "post",
+						url : "http://localhost/login",
+						data: {
+							username : this.username,
+							password : this.password
+						}
+					})
+				},
+				register : function(){
+					document.write("<h1 style='margin-top: 300px;margin-left: 800px;font-size: 40px;'>功能暂时未完成</h1>")
+					axios({
+						method : "post",
+						url : "http://localhost/regis",
+						
+					})
+				}
+			},
+			
+			
+			
+		})
+		
+		
+	</script>
+</html>
